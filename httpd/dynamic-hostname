@@ -1,0 +1,17 @@
+#!/bin/bash
+sudo apt udpate
+sudo apt install -y apache2
+sudo systemctl start apache2
+HOSTNAME=$(hostname)
+
+sudo bash -c "echo \"<html><body><h1>Welcome to $HOSTNAME!</h1></body></html>\" > /var/www/html/index.html"
+
+AWS EC2 User Data
+
+#!/bin/bash
+yum update -y
+yum install -y httpd
+systemctl start httpd
+systemctl enable httpd
+echo " <h1>Hello World from $(hostname -f)</h1> in AZ $EC2_AVAIL_ZONE" > /var/www/html/index.html 
+
